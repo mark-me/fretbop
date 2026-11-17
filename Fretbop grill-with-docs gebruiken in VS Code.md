@@ -6,7 +6,7 @@ Nov 17, 2026 · @Mark
 
 `/grill-with-docs` interviewt je over je ontwerp, net als `/grill-me`, maar legt de uitkomsten vast in je repo: termen in `GLOSSARY.md` en besluiten als ADR's in `docs/adr/`.
 
-|  | `/grill-me` | `/grill-with-docs` |
+| | `/grill-me` | `/grill-with-docs` |
 | --- | --- | --- |
 | Geheugen | Geen: schrijft niets weg | Leest je repo en schrijft bestanden |
 | Bestanden | Geen | `GLOSSARY.md` (root), `docs/adr/0001-slug.md` enz. |
@@ -33,8 +33,8 @@ Installeer drie skills in één keer: `grill-with-docs` en de twee die hij aanro
 npx -y skills@latest add mattpocock/skills --skill grill-with-docs --skill grilling --skill domain-modeling --agent claude-code
 ```
 
-3. Controleer waar de skills terechtkwamen: in de repo (`.claude/skills/`) of in je thuismap (`~/.claude/skills/`). Staan ze in de repo, commit ze dan mee, zodat ze ook op een andere machine werken.
-4. Herlaad VS Code (**Command Palette → Developer: Reload Window**), open het Claude-paneel en typ `/`. Je moet `grill-with-docs` in de lijst zien.
+1. Controleer waar de skills terechtkwamen: in de repo (`.claude/skills/`) of in je thuismap (`~/.claude/skills/`). Staan ze in de repo, commit ze dan mee, zodat ze ook op een andere machine werken.
+2. Herlaad VS Code (**Command Palette → Developer: Reload Window**), open het Claude-paneel en typ `/`. Je moet `grill-with-docs` in de lijst zien.
 
 Later bijwerken: `npx skills update`.
 
@@ -162,11 +162,13 @@ Het geheugen tussen sessies zit in de repo, niet in het gesprek: de ADR's en `GL
    git switch main && git pull
    git switch -c grill/02-mastery
    ```
+
 2. **Nieuw gesprek** in het Claude-paneel, modus niet Plan, met de startprompt voor het volgende onderwerp:
 
    ```
    /grill-with-docs Read CLAUDE.md, GLOSSARY.md, docs/adr/ and docs/grilling-brief.md first. Grill me on topic 2 of the brief only: mastery thresholds.
    ```
+
 3. **Sessie doen**, op de branch. Claude schrijft ADR's en termen in de werkmap.
 4. **Afronden** met de checklist hierboven, en committen op de branch.
 5. **Mergen naar `main`.** Via een pull request op GitHub zie je alle nieuwe ADR's in één overzicht, handig om ze na te lezen. Alleen werken mag ook lokaal:
@@ -177,6 +179,7 @@ Het geheugen tussen sessies zit in de repo, niet in het gesprek: de ADR's en `GL
    git push
    git branch -d grill/02-mastery
    ```
+
 6. **Terug naar stap 1** voor het volgende onderwerp.
 
 **Branchnamen:**
