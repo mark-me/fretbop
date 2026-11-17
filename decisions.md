@@ -17,6 +17,8 @@
 | 13 | Code, identifiers, YAML keys and configuration in English; all user-facing text via translation keys; locales `en` (default, fallback), `nl-NL` later | Multilingual app without language-specific logic |
 | 14 | Project documentation in English | Consistent with code; accessible to international contributors |
 | 15 | Project name: Fretbop | Instrument-neutral across fretted instruments; no clashes found on PyPI, npm or GitHub |
+| 16 | Phase 1 lessons are gated by ear tests only; exercise thresholds are declared and enforced once detectors ship | No microphone in phase 1; keeps ADR 0006 intact without self-assessment |
+| 17 | Explanations use note names and fret distances, never interval names | Depth without naming anything the learner has not played or heard (ADR 0001) |
 
 ## Phases
 
