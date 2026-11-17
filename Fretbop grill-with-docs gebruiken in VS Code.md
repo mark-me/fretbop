@@ -150,6 +150,56 @@ Controleer na elke sessie wat er veranderd is en commit het, voordat je aan het 
 
 Klopt een ADR niet, pas hem dan zelf aan of verwijder hem voor je commit. Wat in de repo staat, gebruikt de volgende sessie als waarheid.
 
+## Werkwijze per onderwerp
+
+Elk onderwerp krijgt een eigen branch en een nieuw gesprek. Je merget de branch naar `main` voordat je aan het volgende onderwerp begint.
+
+Het geheugen tussen sessies zit in de repo, niet in het gesprek: de ADR's en `GLOSSARY.md` die op `main` staan, zijn het startpunt voor de volgende ronde.
+
+1. **Branch maken vanaf een bijgewerkte `main`:**
+
+   ```bash
+   git switch main && git pull
+   git switch -c grill/02-mastery
+   ```
+2. **Nieuw gesprek** in het Claude-paneel, modus niet Plan, met de startprompt voor het volgende onderwerp:
+
+   ```
+   /grill-with-docs Read CLAUDE.md, GLOSSARY.md, docs/adr/ and docs/grilling-brief.md first. Grill me on topic 2 of the brief only: mastery thresholds.
+   ```
+3. **Sessie doen**, op de branch. Claude schrijft ADR's en termen in de werkmap.
+4. **Afronden** met de checklist hierboven, en committen op de branch.
+5. **Mergen naar `main`.** Via een pull request op GitHub zie je alle nieuwe ADR's in één overzicht, handig om ze na te lezen. Alleen werken mag ook lokaal:
+
+   ```bash
+   git switch main
+   git merge --no-ff grill/02-mastery
+   git push
+   git branch -d grill/02-mastery
+   ```
+6. **Terug naar stap 1** voor het volgende onderwerp.
+
+**Branchnamen:**
+
+| Onderwerp | Branch |
+| --- | --- |
+| 1 Didactische volgorde | `grill/01-didactics` |
+| 2 Beheersing | `grill/02-mastery` |
+| 3 Risico fase 3 | `grill/03-chord-detection-risk` |
+| 4 Definitie van klaar | `grill/04-definition-of-done` |
+| 5 Uitbreiding instrumenten | `grill/05-instrument-extension` |
+
+**Eén onderwerp tegelijk open.** De skill nummert ADR's door vanaf het hoogste nummer in `docs/adr/`. Twee open branches maken allebei bijvoorbeeld een `0016`, wat bij het mergen botst. Merge daarom eerst, begin dan pas aan het volgende onderwerp.
+
+**Een mislukte sessie weggooien.** Bevalt een sessie niet, dan gooi je de branch weg en begin je opnieuw vanaf `main`:
+
+```bash
+git switch main
+git branch -D grill/02-mastery
+```
+
+**Een eerder besluit herzien.** Verandert een onderwerp een bestaand besluit, laat Claude dan geen bestaande ADR overschrijven. Hij schrijft een nieuwe ADR, en de oude krijgt bovenaan `Status: superseded by ADR-00NN`. Zo blijft zichtbaar waarom het besluit veranderde.
+
 ## Problemen oplossen
 
 | Probleem | Oplossing |
