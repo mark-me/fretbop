@@ -24,6 +24,10 @@ _Avoid_: Drill, playing step
 A step in which the learner listens and answers a question about what they heard, without playing.
 _Avoid_: Quiz, listening exercise, listening question
 
+**Ear test recipe**:
+The description in a package of what an ear test asks and which sounds it may use. The app generates each question from it, so no two runs need sound alike.
+_Avoid_: Question bank, template, clip set
+
 **Warm-up**:
 An exercise at the start of a lesson that repeats material from the previous lesson. It does not count towards the lesson's mastery.
 _Avoid_: Review, recap
@@ -61,8 +65,28 @@ _Avoid_: Strumming, rhythm playing
 ## Progress
 
 **Mastered**:
-The state of a step whose thresholds have been met. A lesson is mastered when all of its ear tests and all of its exercises except warm-ups are mastered.
+The state of a step whose mastery threshold has been met. Mastery is permanent. A lesson is mastered when all of its ear tests are mastered and all of its exercises except warm-ups are mastered or unmeasured.
 _Avoid_: Completed, passed, done
+
+**Unmeasured**:
+The state of an exercise that could not be measured because the app lacked the detector it needs, either now or when its lesson was mastered. An unmeasured exercise does not block its lesson.
+_Avoid_: Provisionally mastered (that state is reserved for self-assessment after a measurement failure), skipped
+
+**Mastery threshold**:
+The teaching rule a step must meet to be mastered, such as "8 of the last 10 answers right" or "8 bars in a row at 70 beats per minute". It belongs to the content.
+_Avoid_: Threshold (on its own), pass mark, criteria
+
+**Mastery tempo**:
+The lowest play-along tempo at which playing an exercise counts towards its mastery. Practice at any slower tempo is allowed but does not count.
+_Avoid_: Target tempo, required speed
+
+**Listening mode**:
+An ear-test aid that plays labelled examples of each possible answer without asking questions. It is offered when an ear test is not going well.
+_Avoid_: Practice mode, training mode, hint
+
+**Detector threshold**:
+A technical limit that decides what the app accepts as a measurement, such as minimum signal level or pitch confidence. It belongs to the installation, not to the content.
+_Avoid_: Threshold (on its own), sensitivity
 
 **Entry level**:
 What a learner must already be able to do before lesson 1: play a few open chords, change between them slowly, and keep a steady beat.
