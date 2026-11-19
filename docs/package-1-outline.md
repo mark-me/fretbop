@@ -2,7 +2,7 @@
 
 > **Status: draft, not validated.** No musician has reviewed this outline. It will be checked by the project owner working through each lesson as the first learner: anything confusing, too fast or boring counts as a defect. This file moves to the content repository once that exists (ADR 0004).
 
-This outline is the brief for writing package 1. Terms in **bold** are defined in [`GLOSSARY.md`](../GLOSSARY.md). Read [`docs/adr/`](adr/) before writing content, especially 0001, 0002, 0004, 0006, 0016 and 0017.
+This outline is the brief for writing package 1. Terms in **bold** are defined in [`GLOSSARY.md`](../GLOSSARY.md). Read [`docs/adr/`](adr/) before writing content, especially 0001, 0002, 0004, 0006, 0016, 0017 and 0018.
 
 ## Goal of the package
 
@@ -17,13 +17,14 @@ After lesson 10 the learner can **comp** a major ii-V-I in C and F (G optional) 
 
 1. **Sound first, name last.** A concept is named only in the closing **explanation** of the lesson in which the learner first played and heard it, never earlier. Lesson titles describe a sound or an action, never a term.
 2. **Instrument-neutral content.** Lessons use chord symbols, bars and keys. They never contain **voicings**: the engine generates them per instrument (ADR 0002, 0003). A lesson only declares a voicing preference: `easiest` or `voice-led`.
-3. **At least one ear test per lesson.** Package validation enforces this. In phase 1 ear tests are the only gate (ADR 0016).
-4. **Exercises declare thresholds** even though phase 1 cannot measure them. They are enforced once detectors ship. The threshold values are still to be decided (brief topic 2) and are left as placeholders for now.
+3. **At least one ear test per lesson.** Package validation enforces this. In phase 1 ear tests are the only gate (ADR 0016). Every ear test is written as an **ear test recipe**, never as recorded clips (ADR 0018).
+4. **Exercises declare mastery thresholds** even though phase 1 cannot measure them. They are enforced once detectors ship. See "Mastery thresholds" below for the values.
 5. **Warm-up.** Every lesson from 2 onwards opens with one **warm-up** exercise repeating the previous lesson. It does not count towards mastery.
 6. **Length.** One lesson fits in a single 15–20 minute practice session. Mastering it may take several sessions. Split any lesson that runs longer.
 7. **Explanations go deep, in fret distances.** An explanation gives the name plus why it works, using **note names** and **fret distances** only. Every claim is shown on the fretboard diagram and comes with a replay button. Abstract interval names ("third", "tritone", "half step") are not used. Chord names such as "major seventh" are fine, because the learner has played those chords.
 8. **One comping rhythm** throughout: four strums per bar, accented on beats 2 and 4. The play-along supplies the swing feel. No swing eighths, no other rhythms.
 9. **Counting from home.** "Five-one" and "two-five-one" are introduced by counting letter names up from the home note (C=1, D=2, E=3, F=4, G=5). No scale knowledge is assumed.
+10. **Stable step IDs.** Every step has an ID that never changes between package versions, so recorded mastery survives updates. A mastered lesson stays mastered whatever an update changes.
 
 ## Ear test kinds allowed in this package
 
@@ -38,9 +39,35 @@ After lesson 10 the learner can **comp** a major ii-V-I in C and F (G optional) 
 
 Out of scope: naming root notes, intervals or chord degrees by ear.
 
+## Mastery thresholds
+
+These are the package defaults. A step may override them, but only with a reason. They are first test values, to be adjusted after the first-learner walkthrough.
+
+**Ear tests:** mastered when 8 of the learner's last 10 answers are right. Replays are unlimited and there is no time limit.
+
+**Exercises:**
+
+| Steps | Mastery tempo | Bars in a row | Bars right |
+| --- | --- | --- | --- |
+| Entry check, lessons 1–6 | 60 bpm | 8 | 7 of 8 |
+| Lessons 7–9 | 70 bpm | 8 | 7 of 8 |
+| Lesson 10 | 80 bpm | 16 (the full form) | 14 of 16 |
+
+A bar is right when the expected chord sounds and the change lands on time. How close to the beat counts as "on time" is a **detector threshold** (ADR 0007), not part of the package. Warm-ups have no mastery threshold.
+
+### App behaviour the content can rely on
+
+The content does not need to describe this behaviour; the app provides it for every package.
+
+- Practice at any tempo below the **mastery tempo** is allowed but does not count.
+- The learner's rolling count is always visible ("6 of your last 10 right, need 8").
+- After a wrong ear-test answer, the app plays both options side by side. After 20 answers without reaching mastery, it offers **listening mode**.
+- After 3 attempts at an exercise without reaching mastery, the app gives specific feedback and suggests practising 10 bpm slower. Voicings never change.
+- A mastered lesson opens the next one. The learner decides when to start it.
+
 ## Entry check
 
-- **Exercise:** C – Am – F – G7, one chord per bar, with the play-along at a slow tempo.
+- **Exercise:** C – Am – F – G7, one chord per bar, with the play-along at 60 bpm. Unmeasured in phase 1, so the entry check is only advisory until phase 3.
 - **Ear test:** same or different.
 - **On failure:** say exactly what is missing (for example "switching between C and G7 in time") and allow a retry. No external links.
 
@@ -91,8 +118,8 @@ Optional bonus in G: `| Am7 | D7 | Gmaj7 | Gmaj7 |`.
 
 - A voicing generator with two modes: `easiest` (standalone voicing per chord) and `voice-led` (minimal movement across a progression), for both instruments.
 - A play-along that supports swing feel, a one-chord-per-bar grid and an adjustable tempo.
+- Generation of ear-test questions from ear test recipes, varying key, voicing and chords (ADR 0018).
 
 ## Open questions
 
-- **Thresholds, tempo and moving on** are brief topic 2.
 - **What "done" means for this package** is brief topic 4, which should include the first-learner walkthrough.

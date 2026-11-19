@@ -10,4 +10,4 @@ In phase 1 the app has no microphone input, so it cannot measure exercises. Rath
 ## Consequences
 
 - Every lesson needs at least one ear test, or it has no gate in phase 1.
-- When a detector ships, learners who mastered a lesson in phase 1 have unmeasured exercises. How their progress is treated then belongs to the mastery model (brief topic 2).
+- When a detector ships, lessons mastered in phase 1 stay mastered. Their exercises are marked **unmeasured** and the app offers an optional check-up, but no lesson is locked again (decided in the topic 2 grilling, 2026-11-19).
