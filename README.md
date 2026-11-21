@@ -16,11 +16,12 @@ Fretbop is a self-hosted web app that teaches jazz to players who know their ins
 ## Roadmap
 
 | Phase | Deliverable |
-|---|---|
+| --- | --- |
 | 0 | Theory engine, voicing generator, SVG fretboard, playback |
+| — | Detection spike: measure chord verification, string check and timing on real ukulele recordings |
 | 1 | One content package (seventh chords, ii-V-I) with play-along |
-| 2 | Tuner, single-note pitch detection, signal-quality checks |
-| 3 | Chord verification and per-string diagnosis |
+| 2 | Tuner, single-note pitch detection, signal-quality checks, calibration, string check (feedback only) |
+| 3 | Chord verification in exercises, string check for diagnosis |
 | 4 | Opt-in local recordings and threshold tuning |
 
 ## Planned stack

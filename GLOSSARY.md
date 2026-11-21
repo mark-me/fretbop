@@ -84,6 +84,22 @@ _Avoid_: Target tempo, required speed
 An ear-test aid that plays labelled examples of each possible answer without asking questions. It is offered when an ear test is not going well.
 _Avoid_: Practice mode, training mode, hint
 
+**Chord verification**:
+Checking whether the chord an exercise expects is sounding. Fretbop only ever verifies an expected chord; it never works out which chord is being played from sound alone.
+_Avoid_: Chord recognition, chord detection, chord identification
+
+**String check**:
+A check in which the learner plucks a chord one string at a time, so each string's note can be judged separately. It is how Fretbop tells the learner which string is wrong.
+_Avoid_: Per-string detection, arpeggio test
+
+**Detection level**:
+How much of an exercise the app can measure on a given instrument: full, without chord verification, string check only, or none.
+_Avoid_: Fallback mode, degraded mode, support level
+
+**Calibration**:
+A one-time tap-along per device that measures how late that device's microphone signal arrives, so timing can be judged fairly.
+_Avoid_: Latency test, sync
+
 **Detector threshold**:
 A technical limit that decides what the app accepts as a measurement, such as minimum signal level or pitch confidence. It belongs to the installation, not to the content.
 _Avoid_: Threshold (on its own), sensitivity

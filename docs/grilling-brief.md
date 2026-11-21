@@ -14,21 +14,18 @@ ADRs 0008–0015 (platform, roles, licensing, phasing, language, documentation, 
 
 **Topic 2, mastery** (grilled 2026-11-19): mastery thresholds, tempo, moving on, and what happens when a step isn't going well. See the "Mastery thresholds" section of [`package-1-outline.md`](package-1-outline.md), ADR 0018 (ear tests generated from recipes), the updated consequences of ADR 0016, and the progress terms in [`GLOSSARY.md`](../GLOSSARY.md).
 
+**Topic 3, phase 3 risk** (grilled 2026-11-21): chord verification instead of recognition, the string check for per-string diagnosis, per-device calibration, a detection spike before phase 1 with its test set and pass mark, and the detection-level ladder as fallback. See ADR 0019, the roadmap in the [README](../README.md) and the detection terms in [`GLOSSARY.md`](../GLOSSARY.md).
+
 ## Grill me on
 
 Topic numbers are kept stable so that the parked questions below can refer to them.
 
-- **Topic 3, Phase 3 risk** — what happens if chord detection on ukulele turns out to be unreliable. What is the fallback, and how do I find out early?
 - **Topic 4, Definition of done** — what "finished" means for phase 0 and phase 1.
 - **Topic 5, Instrument extension** — what in ADRs 0001–0007 would break or need to change when guitar and bass are added.
 
 ## Parked questions
 
-These questions came up while grilling topics 1 and 2 but belong to other topics or to later work.
-
-### For topic 3 (phase 3 risk)
-
-- Whether a chord change is "on time" is a detector threshold that depends on each device's audio delay. How is that delay measured or calibrated per device, and how early can we find out whether a usable tolerance exists?
+These questions came up while grilling topics 1 to 3 but belong to other topics or to later work.
 
 ### For topic 4 (definition of done)
 
@@ -37,6 +34,8 @@ These questions came up while grilling topics 1 and 2 but belong to other topics
 - Phase 0 must deliver a voicing generator with two modes (`easiest` and `voice-led`) for both ukuleles, and a play-along with swing feel, a one-chord-per-bar grid and an adjustable tempo. Are these part of phase 0's definition of done?
 - ADR 0018 requires the engine to generate ear-test questions from recipes. Does that belong to phase 0 or phase 1?
 - Topic 2 added app behaviour that package 1 relies on: the rolling count on screen, side-by-side replay after a wrong answer, listening mode, strict lesson order, and stable step IDs so mastery survives package updates. Are all of these needed for phase 1 to be done?
+- The detection spike (ADR 0019) sits between phase 0 and phase 1. Is it part of phase 0's definition of done, and what counts as finished: the measurements, or the ADR that sets each instrument's detection level?
+- Phase 2 now also includes calibration and the string check (feedback only). Are both part of phase 2's definition of done?
 
 ### For topic 5 (instrument extension)
 
